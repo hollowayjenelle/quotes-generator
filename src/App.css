@@ -11,9 +11,13 @@ body{
   width: 100vw;
   height: 100vh;
   background-color: #c57aff;
+  display: grid;
 }
 
-.main-sectio{
-  margin: auto;
+.main-section{
+  width: 500px;
+  height: 500px;
   border: 2px solid black;
+  place-self: center;
+  background-color: white;
 }
