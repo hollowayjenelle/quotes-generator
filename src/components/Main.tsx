@@ -1,31 +1,40 @@
 import {FC, useState, useEffect} from 'react';
 
 interface Quote{
-    q: string,
-    a: string,
-    h: string
+    text: string,
+    author: string
 }
 
 const Main: FC = () => {
     const [quote, setQuote] = useState<Quote>({
-        q: "",
-        a: "",
-        h: ""
+        text: "",
+        author: ""
     })
 
     const [allQuotes, setAllQuotes] = useState<Quote[]>([])
 
     useEffect(() => {
-        fetch("https://zenquotes.io/api/quotes")
-        .then(res => res.json())
-        .then(data => setAllQuotes(data))
-    })
+        fetch("https://type.fit/api/quotes")
+        .then(response => response.json())
+        .then(res => setAllQuotes(res))
+    }, [])
 
-    
+    function getQuote(){
+        const randomNum = Math.round(Math.random() * allQuotes.length)
+        const randomQuote = allQuotes[randomNum]
+        setQuote({
+            text: randomQuote.text,
+            author: randomQuote.author
+        })
+    }
     
     return (
-        <div>
-            
+        <div className='main-section'>
+            <button onClick={getQuote}>Get new quote</button>
+            <div className='main-circle'>
+                <h2>{quote.text}</h2>
+                <h4>{quote.author}</h4>
+            </div>
         </div>
     );
 };
