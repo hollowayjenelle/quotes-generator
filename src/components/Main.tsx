@@ -1,19 +1,6 @@
 import {FC, useState, useEffect} from 'react';
+import {Quote, Image} from './interfaces'
 
-interface Quote{
-    text: string,
-    author: string
-}
-
-interface Image{
-    date: string,
-    explanation: string,
-    hdUrl: string,
-    media_type: string,
-    service_version: string,
-    title: string,
-    url: string
-}
 
 const Main: FC = () => {
     const [quote, setQuote] = useState<Quote>({
@@ -31,10 +18,15 @@ const Main: FC = () => {
     }, [])
 
     useEffect(() => {
-        fetch("https://go-apod.herokuapp.com/apod")
+        fetch("https://pixabay.com/api/?key=33096621-16e7336a5bd816c5d84d7b47f&q=beach&image_type=photo&pretty=true")
         .then(response => response.json())
-        .then(res => console.log(res))
+        .then(res => setAllImages(res.hits))
     })
+
+    function getRandomImage(){
+        const randomNum = Math.round(Math.random() * allImages.length)
+
+    }
 
     function getQuote(){
         const randomNum = Math.round(Math.random() * allQuotes.length)
