@@ -8,6 +8,30 @@ const Main: FC = () => {
         author: ""
     })
 
+    const [image, setImage] = useState<Image>({
+        collections: 0,
+        comments: 0,
+        downloads: 0,
+        id: 0,
+        imageHeight: 0,
+        imageSize: 0,
+        imageWidth: 0,
+        largeImageURL: '',
+        likes: 0,
+        pageURL: '',
+        previewHeight: 0,
+        previewURL: '',
+        previewWidth: 0,
+        tags: '',
+        user: '',
+        userImageURL: '',
+        user_id: 0,
+        views: 0,
+        webformatHeight: 0,
+        webformatURL: '',
+        webformatWidth: 0
+    })
+
     const [allQuotes, setAllQuotes] = useState<Quote[]>([])
     const [allImages, setAllImages] = useState<Image[]>([])
 
@@ -25,8 +49,12 @@ const Main: FC = () => {
 
     function getRandomImage(){
         const randomNum = Math.round(Math.random() * allImages.length)
-
+        const randomImg = allImages[randomNum]
+        setImage({
+            ...randomImg
+        })
     }
+
 
     function getQuote(){
         const randomNum = Math.round(Math.random() * allQuotes.length)
