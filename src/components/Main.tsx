@@ -5,6 +5,16 @@ interface Quote{
     author: string
 }
 
+interface Image{
+    date: string,
+    explanation: string,
+    hdUrl: string,
+    media_type: string,
+    service_version: string,
+    title: string,
+    url: string
+}
+
 const Main: FC = () => {
     const [quote, setQuote] = useState<Quote>({
         text: "",
@@ -12,12 +22,19 @@ const Main: FC = () => {
     })
 
     const [allQuotes, setAllQuotes] = useState<Quote[]>([])
+    const [allImages, setAllImages] = useState<Image[]>([])
 
     useEffect(() => {
         fetch("https://type.fit/api/quotes")
         .then(response => response.json())
         .then(res => setAllQuotes(res))
     }, [])
+
+    useEffect(() => {
+        fetch("https://go-apod.herokuapp.com/apod")
+        .then(response => response.json())
+        .then(res => console.log(res))
+    })
 
     function getQuote(){
         const randomNum = Math.round(Math.random() * allQuotes.length)
