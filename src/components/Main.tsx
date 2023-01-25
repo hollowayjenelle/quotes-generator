@@ -4,8 +4,8 @@ import {Quote, Image} from './interfaces'
 
 const Main: FC = () => {
     const [quote, setQuote] = useState<Quote>({
-        text: "Success isn't about how much money you make; it's about the difference you make in people's lives",
-        author: "Michelle Obama"
+        text: "",
+        author: null
     })
 
     const [image, setImage] = useState<Image>({
@@ -16,14 +16,14 @@ const Main: FC = () => {
         imageHeight: 0,
         imageSize: 0,
         imageWidth: 0,
-        largeImageURL: "https://pixabay.com/get/g84d563f4364aea3bbcae74d095f7ca219f2d852e76bd67991c09145f6ad866a2b2af04e2007fb35e3e74fbf572e23ce58a0f86571f2b701ed10a08a86f37eae7_1280.jpg",
+        largeImageURL: "",
         likes: 0,
-        pageURL: 'https://pixabay.com/photos/tree-sunset-clouds-sky-silhouette-736885/',
+        pageURL: '',
         previewHeight: 0,
         previewURL: '',
         previewWidth: 0,
         tags: '',
-        user: 'Bessi',
+        user: '',
         userImageURL: '',
         user_id: 0,
         views: 0,
@@ -50,12 +50,7 @@ const Main: FC = () => {
     function getRandomImage(){
         const randomNum = Math.round(Math.random() * allImages.length)
         const randomImg = allImages[randomNum]
-        setImage(prevImg => ({
-            ...prevImg,
-            largeImageURL: randomImg.largeImageURL,
-            user: randomImg.user,
-            pageURL: randomImg.pageURL
-        }))
+        setImage(randomImg)
     }
 
 
@@ -75,10 +70,10 @@ const Main: FC = () => {
         <div className='main-section' style={{backgroundImage: `url(${image.largeImageURL})`, objectFit: "cover", backgroundRepeat:"repeat", transition: "background-image 2s ease-in-out"}}>
             <button className='main-btn' onClick={getQuote}>Get new quote</button>
             <div className='main-circle'>
-                <h3 className='quote'>{quote.text}</h3>
+                <h3 className='quote'>{quote.text === '' ? `Click 'Get new quote' to get your first quote` : quote.text}</h3>
                 <div className='author-name'>{quote.author === null ? "Unknown" : quote.author}</div>
             </div>
-            <p className='footer-credit'>Photo by <a href={image.pageURL}>{image.user}</a></p>
+            <p className='footer-credit'>Photo by <a href={image.pageURL === '' ? '#' : image.pageURL}>{image.user === '' ? "-" : image.user}</a></p>
         </div>
     );
 };

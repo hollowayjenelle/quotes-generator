@@ -1,6 +1,6 @@
 export interface Quote{
     text: string,
-    author: string
+    author: string | null
 }
 
 export interface Image{
