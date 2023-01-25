@@ -18,12 +18,12 @@ const Main: FC = () => {
         imageWidth: 0,
         largeImageURL: "https://pixabay.com/get/g84d563f4364aea3bbcae74d095f7ca219f2d852e76bd67991c09145f6ad866a2b2af04e2007fb35e3e74fbf572e23ce58a0f86571f2b701ed10a08a86f37eae7_1280.jpg",
         likes: 0,
-        pageURL: '',
+        pageURL: 'https://pixabay.com/photos/tree-sunset-clouds-sky-silhouette-736885/',
         previewHeight: 0,
         previewURL: '',
         previewWidth: 0,
         tags: '',
-        user: '',
+        user: 'Bessi',
         userImageURL: '',
         user_id: 0,
         views: 0,
@@ -60,27 +60,25 @@ const Main: FC = () => {
 
 
     function getQuote(){
-        getRandomImage()
         const randomNum = Math.round(Math.random() * allQuotes.length)
         const randomQuote = allQuotes[randomNum]
         setQuote({
             text: randomQuote.text,
             author: randomQuote.author
         })
+        getRandomImage()
     }
 
     console.log(image)
     
     return (
-        <div className='main-section' style={{backgroundImage: `url(${image.largeImageURL})`, objectFit: "cover", backgroundRepeat:"repeat", transition: "background-image 1s ease-in-out"}}>
+        <div className='main-section' style={{backgroundImage: `url(${image.largeImageURL})`, objectFit: "cover", backgroundRepeat:"repeat", transition: "background-image 2s ease-in-out"}}>
             <button className='main-btn' onClick={getQuote}>Get new quote</button>
             <div className='main-circle'>
                 <h3 className='quote'>{quote.text}</h3>
                 <div className='author-name'>{quote.author === null ? "Unknown" : quote.author}</div>
             </div>
-            <footer>
-                <a></a>
-            </footer>
+            <p className='footer-credit'>Photo by <a href={image.pageURL}>{image.user}</a></p>
         </div>
     );
 };
