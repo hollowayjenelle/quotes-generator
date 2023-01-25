@@ -23,18 +23,18 @@ body{
 
 
 .main-btn{
-  position: relative;
+  position: fixed;
   top: 5%;
-  left: 80%;
+  left: 85%;
 }
 
 .main-circle{
-  background-color: white;
+  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   width: 450px;
   height: 450px;
-  border: 1px solid black;
   margin: auto;
-  top: 10%;
+  top: 15%;
   border-radius: 50%;
   position: relative;
   line-height: 1.2;
@@ -58,13 +58,14 @@ body{
 }
 
 .footer-credit{
-  position: relative;
-  top: 20%;
+  position: fixed;
+  top: 90%;
   margin-left: 10px;
   background-color: white;
   width: 180px;
   padding: 5px;
   border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 a:link{
