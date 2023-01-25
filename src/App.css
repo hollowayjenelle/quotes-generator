@@ -13,25 +13,28 @@ body{
 }
 
 .main-section{
-  width: 70%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
   border: 2px solid black;
   place-self: center;
   background-color: white;
+  position: relative;
 }
 
 
 .main-btn{
   position: relative;
-  left: 90%;
-  bottom: 15%;
+  top: 5%;
+  left: 80%;
 }
 
 .main-circle{
+  background-color: white;
   width: 450px;
   height: 450px;
-  border: 2px solid black;
+  border: 1px solid black;
   margin: auto;
+  top: 10%;
   border-radius: 50%;
   position: relative;
   line-height: 1.2;
@@ -39,10 +42,18 @@ body{
 
 .quote{
   position: absolute;
-  bottom: 50%;
+  bottom: 45%;
   left: 10%;
   width: 80%;
   text-align: center;
   overflow-wrap: break-word;
+}
+
+.author-name{
+  position: absolute;
+  bottom: 40%;
+  left: 10%;
+  width: 80%;
+  text-align: center;
 }
 

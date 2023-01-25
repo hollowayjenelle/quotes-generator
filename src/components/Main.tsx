@@ -49,10 +49,12 @@ const Main: FC = () => {
 
     function getRandomImage(){
         const randomNum = Math.round(Math.random() * allImages.length)
-        const randomImg = allImages[randomNum].largeImageURL
+        const randomImg = allImages[randomNum]
         setImage(prevImg => ({
             ...prevImg,
-            largeImageURL: randomImg
+            largeImageURL: randomImg.largeImageURL,
+            user: randomImg.user,
+            pageURL: randomImg.pageURL
         }))
     }
 
@@ -70,12 +72,15 @@ const Main: FC = () => {
     console.log(image)
     
     return (
-        <div className='main-section'>
+        <div className='main-section' style={{backgroundImage: `url(${image.largeImageURL})`, objectFit: "cover", backgroundRepeat:"repeat", transition: "background-image 1s ease-in-out"}}>
             <button className='main-btn' onClick={getQuote}>Get new quote</button>
             <div className='main-circle'>
                 <h3 className='quote'>{quote.text}</h3>
                 <div className='author-name'>{quote.author === null ? "Unknown" : quote.author}</div>
             </div>
+            <footer>
+                <a></a>
+            </footer>
         </div>
     );
 };
