@@ -4,8 +4,8 @@ import {Quote, Image} from './interfaces'
 
 const Main: FC = () => {
     const [quote, setQuote] = useState<Quote>({
-        text: "",
-        author: ""
+        text: "Success isn't about how much money you make; it's about the difference you make in people's lives",
+        author: "Michelle Obama"
     })
 
     const [image, setImage] = useState<Image>({
@@ -16,7 +16,7 @@ const Main: FC = () => {
         imageHeight: 0,
         imageSize: 0,
         imageWidth: 0,
-        largeImageURL: '',
+        largeImageURL: "https://pixabay.com/get/g84d563f4364aea3bbcae74d095f7ca219f2d852e76bd67991c09145f6ad866a2b2af04e2007fb35e3e74fbf572e23ce58a0f86571f2b701ed10a08a86f37eae7_1280.jpg",
         likes: 0,
         pageURL: '',
         previewHeight: 0,
@@ -42,21 +42,23 @@ const Main: FC = () => {
     }, [])
 
     useEffect(() => {
-        fetch("https://pixabay.com/api/?key=33096621-16e7336a5bd816c5d84d7b47f&q=beach&image_type=photo&pretty=true")
+        fetch("https://pixabay.com/api/?key=33096621-16e7336a5bd816c5d84d7b47f&q=sunset&image_type=photo&pretty=true")
         .then(response => response.json())
         .then(res => setAllImages(res.hits))
-    })
+    }, [])
 
     function getRandomImage(){
         const randomNum = Math.round(Math.random() * allImages.length)
-        const randomImg = allImages[randomNum]
-        setImage({
-            ...randomImg
-        })
+        const randomImg = allImages[randomNum].largeImageURL
+        setImage(prevImg => ({
+            ...prevImg,
+            largeImageURL: randomImg
+        }))
     }
 
 
     function getQuote(){
+        getRandomImage()
         const randomNum = Math.round(Math.random() * allQuotes.length)
         const randomQuote = allQuotes[randomNum]
         setQuote({
@@ -64,13 +66,15 @@ const Main: FC = () => {
             author: randomQuote.author
         })
     }
+
+    console.log(image)
     
     return (
         <div className='main-section'>
-            <button onClick={getQuote}>Get new quote</button>
+            <button className='main-btn' onClick={getQuote}>Get new quote</button>
             <div className='main-circle'>
-                <h2>{quote.text}</h2>
-                <h4>{quote.author}</h4>
+                <h3 className='quote'>{quote.text}</h3>
+                <div className='author-name'>{quote.author === null ? "Unknown" : quote.author}</div>
             </div>
         </div>
     );
