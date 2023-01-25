@@ -19,6 +19,11 @@ body{
   place-self: center;
   background-color: white;
   position: relative;
+  transition: background-image 1s ease-in-out;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 

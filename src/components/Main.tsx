@@ -5,7 +5,7 @@ import {Quote, Images} from './interfaces'
 const Main: FC = () => {
     const [quote, setQuote] = useState<Quote>({
         text: "",
-        author: null
+        author: ''
     })
 
     const [image, setImage] = useState<Images>({
@@ -71,7 +71,7 @@ const Main: FC = () => {
     } 
     img_tag.src = image.largeImageURL  
     return (
-        <div className='main-section' style={{objectFit: "cover", backgroundRepeat:"repeat", transition: "background-image 1s ease-in-out"}}>
+        <div className='main-section'>
             <button className='main-btn' onClick={getQuote}>Get new quote</button>
             <div className='main-circle'>
                 <h3 className='quote'>{quote.text === '' ? `Click 'Get new quote' to get your first quote` : quote.text}</h3>
