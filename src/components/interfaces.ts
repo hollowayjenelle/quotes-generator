@@ -3,7 +3,7 @@ export interface Quote{
     author: string | null
 }
 
-export interface Image{
+export interface Images{
     collections: number,
     comments: number,
     downloads: number,

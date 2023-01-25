@@ -1,5 +1,5 @@
 import {FC, useState, useEffect} from 'react';
-import {Quote, Image} from './interfaces'
+import {Quote, Images} from './interfaces'
 
 
 const Main: FC = () => {
@@ -8,7 +8,7 @@ const Main: FC = () => {
         author: null
     })
 
-    const [image, setImage] = useState<Image>({
+    const [image, setImage] = useState<Images>({
         collections: 0,
         comments: 0,
         downloads: 0,
@@ -33,7 +33,7 @@ const Main: FC = () => {
     })
 
     const [allQuotes, setAllQuotes] = useState<Quote[]>([])
-    const [allImages, setAllImages] = useState<Image[]>([])
+    const [allImages, setAllImages] = useState<Images[]>([])
 
     useEffect(() => {
         fetch("https://type.fit/api/quotes")
@@ -64,10 +64,14 @@ const Main: FC = () => {
         getRandomImage()
     }
 
-    console.log(image)
-    
+    let img_tag = new Image() 
+    img_tag.onload = function(){
+       const mainSection = document.querySelector('.main-section') as HTMLElement
+       mainSection.style.backgroundImage = `url(${image.largeImageURL})`
+    } 
+    img_tag.src = image.largeImageURL  
     return (
-        <div className='main-section' style={{backgroundImage: `url(${image.largeImageURL})`, objectFit: "cover", backgroundRepeat:"repeat", transition: "background-image 2s ease-in-out"}}>
+        <div className='main-section' style={{objectFit: "cover", backgroundRepeat:"repeat", transition: "background-image 1s ease-in-out"}}>
             <button className='main-btn' onClick={getQuote}>Get new quote</button>
             <div className='main-circle'>
                 <h3 className='quote'>{quote.text === '' ? `Click 'Get new quote' to get your first quote` : quote.text}</h3>
