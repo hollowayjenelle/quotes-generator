@@ -1,3 +1,8 @@
+# Project Description
+
+This is a quote generator that utlizes a Quote and Image API to display a new quote and image when the user clicks `Get new quote` button.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
