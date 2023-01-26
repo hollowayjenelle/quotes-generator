@@ -31,6 +31,15 @@ body{
   position: fixed;
   top: 5%;
   left: 85%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  width: 130px;
+  font-size: 14px;
+  font-family: 'Inter';
+  font-weight: 600;
 }
 
 .main-circle{
@@ -47,7 +56,7 @@ body{
 
 .quote{
   position: absolute;
-  bottom: 45%;
+  bottom: 43%;
   left: 10%;
   width: 80%;
   text-align: center;
@@ -56,10 +65,11 @@ body{
 
 .author-name{
   position: absolute;
-  bottom: 40%;
+  bottom: 38%;
   left: 10%;
   width: 80%;
   text-align: center;
+  font-style: italic;
 }
 
 .footer-credit{
